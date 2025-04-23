@@ -1,8 +1,8 @@
 name: Run Laravel Tests
 
 on:
-  push:          # <-- runs on all pushes to any branch
-  pull_request:  # still includes pull request events
+  push: # <-- runs on all pushes to any branch
+  pull_request: # still includes pull request events
 
 jobs:
   laravel-tests:
@@ -63,4 +63,4 @@ jobs:
       - name: Run PHPUnit
         env:
           DB_CONNECTION: sqlite
-        run: ./vendor/bin/phpunit
+        run: ./vendor/bin/pest
