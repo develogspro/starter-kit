@@ -4,6 +4,7 @@ use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
 use Monolog\Processor\PsrLogMessageProcessor;
+use Smpita\TypeAs\TypeAs;
 
 return [
 
@@ -54,7 +55,7 @@ return [
 
         'stack' => [
             'driver' => 'stack',
-            'channels' => explode(',', env('LOG_STACK', 'single')),
+            'channels' => explode(',', TypeAs::string(env('LOG_STACK', 'single'))),
             'ignore_exceptions' => false,
         ],
 
