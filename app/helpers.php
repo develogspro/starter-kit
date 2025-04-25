@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Contracts\Auth\Authenticatable;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
-function user(): ?Authenticatable
+function user(): User
 {
-    if (! auth()->check()) {
-        return null;
+    if (! Auth::check() or empty(Auth::user())) {
+        throw new Exception('User not authenticated');
     }
 
-    return auth()->user();
+    return Auth::user();
 }
